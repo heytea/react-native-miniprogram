@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heytea/react-native-miniprogram.git",
+    "url": "git+https://github.com/heytea/react-native-miniprogram.git"
   },
   "keywords": [
     "react-native-miniprogram"
