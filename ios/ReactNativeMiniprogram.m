@@ -2,12 +2,20 @@
 
 @implementation ReactNativeMiniprogram
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE("ReactNativeMiniprogram")
 
-RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
-{
-    // TODO: Implement some actually useful functionality
-    callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
+RCT_EXPORT_METHOD(launchWXMiniProgram:(NSString*)appId:(NSString *)username:(NSString*)path:(NSString*)type:(RCTResponseSenderBlock)callback){
+  
+    NSUInteger miniProgramType = [type integerValue];
+    WXLaunchMiniProgramReq *launchMiniProgramReq = [WXLaunchMiniProgramReq object];
+    launchMiniProgramReq.userName = appId;
+    launchMiniProgramReq.miniProgramType = miniProgramType;
+    if(path != nil){
+        launchMiniProgramReq.path = path;
+    }
+    BOOL success =  [WXApi sendReq:launchMiniProgramReq];
+    callback(@[success ? [NSNull null] : INVOKE_FAILED]);
+  
 }
 
 @end

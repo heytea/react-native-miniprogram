@@ -6,23 +6,14 @@ Pod::Spec.new do |s|
   s.name         = "react-native-miniprogram"
   s.version      = package["version"]
   s.summary      = package["description"]
-  s.description  = <<-DESC
-                  react-native-miniprogram
-                   DESC
-  s.homepage     = "https://github.com/github_account/react-native-miniprogram"
-  # brief license entry:
-  s.license      = "MIT"
-  # optional - use expanded license entry instead:
-  # s.license    = { :type => "MIT", :file => "LICENSE" }
-  s.authors      = { "Your Name" => "yourname@email.com" }
+  s.homepage     = package["repository"]["url"]
+  s.license      = package["license"]
+  s.author      = package["author"]
   s.platforms    = { :ios => "9.0" }
-  s.source       = { :git => "https://github.com/github_account/react-native-miniprogram.git", :tag => "#{s.version}" }
-
+  s.source       = { :git => package["repository"]["url"], :tag => "#{s.version}" }
   s.source_files = "ios/**/*.{h,c,m,swift}"
   s.requires_arc = true
-
   s.dependency "React"
-  # ...
-  # s.dependency "..."
+  s.dependency 'WechatOpenSDK', '1.8.3'
 end
 

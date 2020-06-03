@@ -2,7 +2,7 @@
   "name": "@heytea/react-native-miniprogram",
   "title": "React Native Miniprogram",
   "version": "0.1.0",
-  "description": "TODO",
+  "description": "miniprogram plugin",
   "main": "index.js",
   "files": [
     "README.md",
