@@ -1,4 +1,6 @@
 #import "ReactNativeMiniprogram.h"
+#import <WXApi.h>
+#define INVOKE_FAILED (@"WeChat API invoke returns false.")
 
 @implementation ReactNativeMiniprogram
 
