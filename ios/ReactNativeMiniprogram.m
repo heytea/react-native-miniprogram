@@ -4,7 +4,7 @@
 
 @implementation ReactNativeMiniprogram
 
-RCT_EXPORT_MODULE("ReactNativeMiniprogram")
+RCT_EXPORT_MODULE(ReactNativeMiniprogram)
 
 RCT_EXPORT_METHOD(launchWXMiniProgram:(NSString*)appId:(NSString *)username:(NSString*)path:(NSString*)type:(RCTResponseSenderBlock)callback){
   
