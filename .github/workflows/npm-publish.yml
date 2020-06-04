@@ -14,9 +14,9 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
-        node-version: 10.0.0
+        node-version: 12.18.0
     - name: Publish if version has been updated
-      uses: pascalgn/npm-publish-action@1.2.0
+      uses: heytea/npm-publish-action@1.4.0
       with: # All of theses inputs are optional
         tag_name: "v%s"
         tag_message: "v%s"
