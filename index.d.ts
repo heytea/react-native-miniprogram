@@ -5,6 +5,11 @@ export enum MINIPTOGRAM_TYPE {
     MINIPROGRAM_TYPE_PREVIEW = 2
 }
 
+export interface AuthPageResult {
+    errCode: number,
+    wxOrderId: string
+}
+
 /**
  * App跳转微信小程序
  * @param appId 应用AppId
@@ -13,3 +18,10 @@ export enum MINIPTOGRAM_TYPE {
  * @param type 拉起小程序的类型。0：正式版。1：开发版。2：体验版
  */
 export function launchWXMiniProgram(appId: string, username: string, path: string, type: MINIPTOGRAM_TYPE): Promise<null>;
+
+/**
+ * 打开授权页
+ * @param appId 应用AppId
+ * @param url 获取授权页链接返回的auth_url
+ */
+export function openAuthPage(appId: string, url: string): Promise<AuthPageResult>;

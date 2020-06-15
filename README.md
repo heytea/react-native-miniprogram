@@ -21,4 +21,10 @@ import ReactNativeMiniprogram from 'react-native-miniprogram';
  */
 ReactNativeMiniprogram.launchWXMiniProgram(appId: string, username: string, path: string, type: MINIPTOGRAM_TYPE): Promise<null>;
 
+/**
+ * 打开授权页
+ * @param appId 应用AppId
+ * @param url 获取授权页链接返回的auth_url
+ */
+ReactNativeMiniprogram.openAuthPage(appId: string, url: string): Promise<AuthPageResult>;
 ```
