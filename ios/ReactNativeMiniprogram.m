@@ -20,4 +20,25 @@ RCT_EXPORT_METHOD(launchWXMiniProgram:(NSString*)appId:(NSString *)username:(NSS
   
 }
 
+RCT_EXPORT_METHOD(openAuthPage:(NSString *)appId
+                  :(NSString *)url
+                  ){
+    
+    WXInvoiceAuthInsertReq *req = [[WXInvoiceAuthInsertReq alloc] init];
+    req.urlString = url;
+    [WXApi sendReq:req];
+    
+}
+
+- (void) onResp:(BaseResp *)resp
+{
+    if ([resp isKindOfClass:[WXInvoiceAuthInsertResp class]]) {
+        WXInvoiceAuthInsertResp *wxResp = (WXInvoiceAuthInsertResp *) resp;
+        NSString *strTitle = @"微信回跳";
+        NSString *strMsg = [NSString stringWithFormat:@"errcode: %d orderid:%@", wxResp.errCode, wxResp.wxOrderId];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+    }
+}
+
 @end
