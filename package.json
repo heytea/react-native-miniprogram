@@ -1,7 +1,7 @@
 {
   "name": "@heytea/react-native-miniprogram",
   "title": "React Native Miniprogram",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "miniprogram plugin",
   "main": "index.js",
   "files": [
