@@ -6,7 +6,12 @@
 
 RCT_EXPORT_MODULE(ReactNativeMiniprogram)
 
-RCT_EXPORT_METHOD(launchWXMiniProgram:(NSString*)appId:(NSString *)username:(NSString*)path:(NSString*)type:(RCTResponseSenderBlock)callback){
+RCT_EXPORT_METHOD(launchWXMiniProgram
+                  :(NSString*)appId
+                  :(NSString *)username
+                  :(NSString*)path
+                  :(NSString*)type
+                  :(RCTResponseSenderBlock)callback){
   
     NSUInteger miniProgramType = [type integerValue];
     WXLaunchMiniProgramReq *launchMiniProgramReq = [WXLaunchMiniProgramReq object];
@@ -15,18 +20,25 @@ RCT_EXPORT_METHOD(launchWXMiniProgram:(NSString*)appId:(NSString *)username:(NSS
     if(path != nil){
         launchMiniProgramReq.path = path;
     }
-    BOOL success =  [WXApi sendReq:launchMiniProgramReq];
-    callback(@[success ? [NSNull null] : INVOKE_FAILED]);
+    
+    [WXApi sendReq:launchMiniProgramReq completion:^(BOOL success) {
+        callback(@[success ? [NSNull null] : INVOKE_FAILED]);
+    }];
+   
   
 }
 
 RCT_EXPORT_METHOD(openAuthPage:(NSString *)appId
                   :(NSString *)url
+                  :(RCTResponseSenderBlock)callback
                   ){
     
     WXInvoiceAuthInsertReq *req = [[WXInvoiceAuthInsertReq alloc] init];
     req.urlString = url;
-    [WXApi sendReq:req];
+    
+    [WXApi sendReq:req completion:^(BOOL success) {
+        callback(@[success ? [NSNull null] : INVOKE_FAILED]);
+    }];
     
 }
 
@@ -42,3 +54,4 @@ RCT_EXPORT_METHOD(openAuthPage:(NSString *)appId
 }
 
 @end
+
